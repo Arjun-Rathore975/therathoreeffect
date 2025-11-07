@@ -1,11 +1,11 @@
 :root {
-    --bg1: #0b0f14;
-    --bg2: #05070a;
-    --text: #eef2f6;
-    --muted: #9aa2ad;
+    --bg1: #ffffff;
+    --bg2: #f5f7fa;
+    --text: #111418;
+    --muted: #4f5a66;
     --accent: #1d9bf0;
-    --card: rgba(255, 255, 255, 0.04);
-    --border: rgba(255, 255, 255, 0.10);
+    --card: rgba(0, 0, 0, 0.03);
+    --border: rgba(0, 0, 0, 0.12);
 }
 
 * {
@@ -21,48 +21,35 @@ body {
     margin: 0;
     font-family: 'Space Grotesk', sans-serif;
     color: var(--text);
-    background: radial-gradient(1200px 600px at 20% 10%, #0f141b 0%, var(--bg1) 40%) fixed,
-        radial-gradient(1000px 500px at 80% 90%, #0a0f17 0%, var(--bg2) 50%) fixed,
-        linear-gradient(var(--bg1), var(--bg2)) fixed;
+    background: linear-gradient(var(--bg1), var(--bg2)) fixed;
     overflow-x: hidden;
     line-height: 1.8;
 }
 
-/* subtle animated glow */
+/* subtle animated glow (converted to light theme) */
 body::before {
     content: "";
     position: fixed;
     inset: -20%;
-    background: radial-gradient(35% 25% at var(--x, 20%) var(--y, 25%), rgba(29, 155, 240, 0.08), transparent 60%);
+    background: radial-gradient(35% 25% at var(--x, 20%) var(--y, 25%), rgba(29, 155, 240, 0.12), transparent 60%);
     pointer-events: none;
     animation: drift 18s ease-in-out infinite alternate;
     z-index: 0;
 }
 
 @keyframes drift {
-    0% {
-        --x: 18%;
-        --y: 22%;
-    }
-
-    50% {
-        --x: 75%;
-        --y: 60%;
-    }
-
-    100% {
-        --x: 35%;
-        --y: 80%;
-    }
+    0% { --x: 18%; --y: 22%; }
+    50% { --x: 75%; --y: 60%; }
+    100% { --x: 35%; --y: 80%; }
 }
 
-/* centered header */
+/* header */
 header {
     position: sticky;
     top: 0;
     z-index: 10;
     backdrop-filter: blur(10px);
-    background: rgba(10, 12, 15, 0.55);
+    background: rgba(255, 255, 255, 0.55);
     border-bottom: 1px solid var(--border);
 }
 
@@ -88,7 +75,7 @@ header {
     color: var(--muted);
 }
 
-/* nav — simple color fade */
+/* nav */
 nav {
     display: inline-flex;
     gap: 22px;
@@ -102,7 +89,7 @@ nav a {
     letter-spacing: 0.2px;
     padding: 4px 2px;
     transition: color .25s ease, opacity .25s ease;
-    opacity: 0.92;
+    opacity: 0.85;
 }
 
 nav a:hover,
@@ -134,28 +121,20 @@ h3 {
     font-family: 'Poppins', sans-serif;
     letter-spacing: .4px;
     margin: 0 0 10px;
+    color: var(--text);
 }
 
-h1 {
-    font-size: 2.0rem;
-}
-
-h2 {
-    font-size: 1.6rem;
-    color: var(--accent);
-}
-
+h1 { font-size: 2.0rem; }
+h2 { font-size: 1.6rem; color: var(--accent); }
 h3 {
     font-size: 1.15rem;
-    color: #d9e2ee;
+    color: #2c3a45;
     margin-top: 26px;
 }
 
-p {
-    margin: 12px 0;
-}
+p { margin: 12px 0; }
 
-/* cards / grids */
+/* cards */
 .link-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -171,13 +150,14 @@ p {
     padding: 16px;
     backdrop-filter: blur(3px);
     transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    color: var(--text);
 }
 
 .card:hover,
 .project-card:hover {
     transform: translateY(-3px);
     border-color: rgba(29, 155, 240, 0.35);
-    box-shadow: 0 0 28px rgba(29, 155, 240, 0.12);
+    box-shadow: 0 0 18px rgba(29, 155, 240, 0.12);
 }
 
 a.card {
@@ -194,9 +174,7 @@ ul {
     margin: 8px 0 0;
 }
 
-li {
-    margin: 8px 0;
-}
+li { margin: 8px 0; }
 
 /* forms */
 form {
@@ -207,7 +185,7 @@ form {
 
 input,
 textarea {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(0, 0, 0, 0.03);
     color: var(--text);
     border: 1px solid var(--border);
     border-radius: 10px;
@@ -233,6 +211,7 @@ button:hover,
     box-shadow: 0 0 18px rgba(29, 155, 240, 0.35);
 }
 
+/* footer */
 footer {
     max-width: 980px;
     margin: 28px auto 0;
@@ -254,15 +233,7 @@ footer {
 }
 
 @media (max-width: 640px) {
-    .tagline {
-        font-size: 0.9rem;
-    }
-
-    h1 {
-        font-size: 1.7rem;
-    }
-
-    h2 {
-        font-size: 1.45rem;
-    }
+    .tagline { font-size: 0.9rem; }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.45rem; }
 }
